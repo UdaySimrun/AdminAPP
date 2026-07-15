@@ -1,0 +1,1763 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SFKBle_Admin.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
+    xmlns:local="clr-namespace:SFKBle.Models"
+    xmlns:pinview="clr-namespace:PINView.Maui;assembly=PINView.Maui"
+    xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:StatusToColorConverter x:Key="StatusToColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid
+            x:Name="gridMain"
+            Grid.Row="0"
+            IsEnabled="False"
+            VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="rowDefinationHeader" Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout
+                x:Name="stackHeader"
+                Grid.Row="0"
+                HeightRequest="45"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Vertical"
+                VerticalOptions="Start">
+                <StackLayout
+                    Padding="5,0,5,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="FillAndExpand">
+                    <Image Source="sunfunkitslogowtb.png" WidthRequest="70" />
+                    <Label
+                        Padding="10,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="15"
+                        HorizontalOptions="CenterAndExpand"
+                        IsVisible="False"
+                        Text="www.sunfunkits.com"
+                        TextColor="Black" />
+                    <Label
+                        FontSize="15"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="End"
+                        Text="V9.38"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                </StackLayout>
+                <BoxView
+                    BackgroundColor="#f0c000"
+                    HeightRequest="1"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start" />
+            </StackLayout>
+            <StackLayout
+                x:Name="stackMainStackLayout"
+                Grid.Row="1"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="FillAndExpand">
+                <StackLayout
+                    x:Name="stackAvailableData"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <Image
+                        x:Name="imgBatteryScanVertical"
+                        Margin="{OnIdiom Phone='0,10,0,0',
+                                         Tablet='0,20,0,0'}"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="False"
+                        MaximumHeightRequest="{OnIdiom Phone='70',
+                                                       Tablet='120'}"
+                        Source="scanbatteryicon.png"
+                        VerticalOptions="Fill" />
+                    <StackLayout
+                        x:Name="stackAvailableDataInner"
+                        Margin="40,20,40,20"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="False"
+                        VerticalOptions="FillAndExpand">
+                        <Border
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="FillAndExpand"
+                            StrokeThickness="0"
+                            VerticalOptions="FillAndExpand">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5" />
+                            </Border.StrokeShape>
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                Spacing="10"
+                                VerticalOptions="FillAndExpand">
+                                <Border
+                                    x:Name="brdTabView"
+                                    BackgroundColor="#e3e3e3"
+                                    HorizontalOptions="FillAndExpand"
+                                    StrokeThickness="0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="{OnIdiom Phone='10', Tablet='7'}" />
+                                    </Border.StrokeShape>
+                                    <StackLayout
+                                        HorizontalOptions="FillAndExpand"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="FillAndExpand">
+                                        <Border
+                                            x:Name="brdDevieListTab"
+                                            BackgroundColor="#e3e3e3"
+                                            ClassId="DeviceList"
+                                            HorizontalOptions="FillAndExpand"
+                                            StrokeThickness="0"
+                                            VerticalOptions="FillAndExpand">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="{OnIdiom Phone='7', Tablet='7'}" />
+                                            </Border.StrokeShape>
+                                            <Label
+                                                HorizontalOptions="CenterAndExpand"
+                                                Style="{StaticResource ScanTabFont}"
+                                                Text="Device List"
+                                                TextColor="#333333"
+                                                VerticalOptions="CenterAndExpand" />
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="ListTabChange_Tapped" />
+                                            </Border.GestureRecognizers>
+                                        </Border>
+                                        <Border
+                                            x:Name="brdVirtualBatteryListTab"
+                                            BackgroundColor="#e3e3e3"
+                                            ClassId="VirtualBatteryList"
+                                            HorizontalOptions="FillAndExpand"
+                                            IsVisible="True"
+                                            StrokeThickness="0"
+                                            VerticalOptions="FillAndExpand">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="{OnIdiom Phone='7', Tablet='7'}" />
+                                            </Border.StrokeShape>
+                                            <Label
+                                                HorizontalOptions="CenterAndExpand"
+                                                Style="{StaticResource ScanTabFont}"
+                                                Text="Virtual Battery List"
+                                                TextColor="#333333"
+                                                VerticalOptions="CenterAndExpand" />
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="ListTabChange_Tapped" />
+                                            </Border.GestureRecognizers>
+                                        </Border>
+                                    </StackLayout>
+                                </Border>
+                                <Border StrokeThickness="1" VerticalOptions="FillAndExpand">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="{OnIdiom Phone='10', Tablet='7'}" />
+                                    </Border.StrokeShape>
+                                    <StackLayout
+                                        HorizontalOptions="FillAndExpand"
+                                        Orientation="Vertical"
+                                        VerticalOptions="FillAndExpand">
+                                        <!--  Device List  -->
+                                        <StackLayout
+                                            x:Name="stackDeviceList"
+                                            IsVisible="False"
+                                            VerticalOptions="FillAndExpand">
+                                            <ListView
+                                                x:Name="lstDeviceList"
+                                                BackgroundColor="White"
+                                                IsVisible="False"
+                                                RowHeight="70"
+                                                Scrolled="lstDeviceList_Scrolled"
+                                                SelectionMode="None"
+                                                SeparatorVisibility="None"
+                                                VerticalOptions="FillAndExpand"
+                                                VerticalScrollBarVisibility="Never">
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <ViewCell>
+                                                            <ViewCell.View>
+                                                                <StackLayout
+                                                                    Padding="10,0,0,0"
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    Orientation="Horizontal"
+                                                                    VerticalOptions="CenterAndExpand">
+                                                                    <StackLayout
+                                                                        HorizontalOptions="Start"
+                                                                        VerticalOptions="CenterAndExpand"
+                                                                        WidthRequest="{OnIdiom Phone='40',
+                                                                                               Tablet='60'}">
+                                                                        <Image
+                                                                            Margin="0,0,10,0"
+                                                                            HeightRequest="{OnIdiom Phone='30',
+                                                                                                    Tablet='40'}"
+                                                                            Source="{Binding ImageSrcSignalStrength}"
+                                                                            WidthRequest="{OnIdiom Phone='30',
+                                                                                                   Tablet='40'}" />
+                                                                    </StackLayout>
+                                                                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                                                        <Label
+                                                                            FontSize="{OnIdiom Phone='18',
+                                                                                               Tablet='20'}"
+                                                                            Text="{Binding DeviceName}"
+                                                                            TextColor="#333333" />
+                                                                        <Label
+                                                                            FontSize="{OnIdiom Phone='14',
+                                                                                               Tablet='16'}"
+                                                                            Text="{Binding DeviceDetail}"
+                                                                            TextColor="Black" />
+                                                                    </StackLayout>
+                                                                    <StackLayout
+                                                                        Margin="0,0,10,0"
+                                                                        HorizontalOptions="End"
+                                                                        Orientation="Horizontal"
+                                                                        Spacing="0">
+                                                                        <StackLayout
+                                                                            HorizontalOptions="End"
+                                                                            IsVisible="{Binding IsRestore}"
+                                                                            Orientation="Horizontal"
+                                                                            Spacing="7">
+                                                                            <Frame
+                                                                                Margin="0,0,0,0"
+                                                                                Padding="7"
+                                                                                BackgroundColor="#39B54A"
+                                                                                ClassId="{Binding MacAddress}"
+                                                                                CornerRadius="7"
+                                                                                HorizontalOptions="EndAndExpand"
+                                                                                VerticalOptions="Center">
+                                                                                <StackLayout
+                                                                                    HorizontalOptions="Fill"
+                                                                                    Orientation="Horizontal"
+                                                                                    Spacing="2"
+                                                                                    VerticalOptions="CenterAndExpand">
+                                                                                    <Image
+                                                                                        HeightRequest="20"
+                                                                                        Source="restore.png"
+                                                                                        WidthRequest="20" />
+                                                                                    <Label
+                                                                                        Padding="0"
+                                                                                        FontAttributes="Bold"
+                                                                                        FontSize="15"
+                                                                                        Text="Restore"
+                                                                                        TextColor="White"
+                                                                                        VerticalOptions="CenterAndExpand" />
+                                                                                </StackLayout>
+                                                                                <Frame.GestureRecognizers>
+                                                                                    <TapGestureRecognizer Tapped="frmRestoreDefault_Tapped" />
+                                                                                </Frame.GestureRecognizers>
+                                                                            </Frame>
+                                                                            <Frame
+                                                                                Margin="0,0,0,0"
+                                                                                Padding="7"
+                                                                                BackgroundColor="#F99C00"
+                                                                                ClassId="{Binding MacAddress}"
+                                                                                CornerRadius="7"
+                                                                                HorizontalOptions="EndAndExpand"
+                                                                                VerticalOptions="Center">
+                                                                                <StackLayout
+                                                                                    HorizontalOptions="Fill"
+                                                                                    Orientation="Horizontal"
+                                                                                    VerticalOptions="CenterAndExpand">
+                                                                                    <Label
+                                                                                        Padding="0"
+                                                                                        FontAttributes="Bold"
+                                                                                        FontSize="15"
+                                                                                        Text="PIN?"
+                                                                                        TextColor="White"
+                                                                                        VerticalOptions="CenterAndExpand" />
+                                                                                </StackLayout>
+                                                                                <Frame.GestureRecognizers>
+                                                                                    <TapGestureRecognizer Tapped="frmForgotPIN_Tapped" />
+                                                                                </Frame.GestureRecognizers>
+                                                                            </Frame>
+                                                                        </StackLayout>
+                                                                        <StackLayout
+                                                                            HorizontalOptions="End"
+                                                                            IsVisible="{Binding IsVisible}"
+                                                                            VerticalOptions="CenterAndExpand">
+                                                                            <input:CheckBox
+                                                                                x:Name="{Binding MacAddress}"
+                                                                                Padding="2,0,2,0"
+                                                                                BorderColor="#fc0"
+                                                                                CheckChanged="CheckBox_CheckChanged"
+                                                                                ClassId="{Binding MacAddress}"
+                                                                                HeightRequest="35"
+                                                                                HorizontalOptions="End"
+                                                                                IsChecked="{Binding IsChecked, Mode=TwoWay}"
+                                                                                ScaleX="{OnIdiom Phone='1.3',
+                                                                                                 Tablet='1.5'}"
+                                                                                ScaleY="{OnIdiom Phone='1.3',
+                                                                                                 Tablet='1.5'}"
+                                                                                Type="Regular"
+                                                                                VerticalOptions="EndAndExpand"
+                                                                                WidthRequest="35"
+                                                                                Color="#fc0" />
+                                                                        </StackLayout>
+                                                                    </StackLayout>
+                                                                </StackLayout>
+                                                            </ViewCell.View>
+                                                        </ViewCell>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                            <Label
+                                                x:Name="lblNoDeviceListFound"
+                                                Margin="0,20,0,0"
+                                                FontAttributes="Bold"
+                                                HorizontalOptions="CenterAndExpand"
+                                                IsVisible="False"
+                                                Style="{StaticResource NormalStyle}"
+                                                Text="No devices found"
+                                                TextColor="Red"
+                                                VerticalOptions="FillAndExpand" />
+                                        </StackLayout>
+
+                                        <!--  Virtual Battery  -->
+                                        <StackLayout
+                                            x:Name="stackVirtualBatteryList"
+                                            IsVisible="False"
+                                            VerticalOptions="FillAndExpand">
+                                            <ListView
+                                                x:Name="lstVirtualBatteryList"
+                                                Margin="0"
+                                                BackgroundColor="White"
+                                                IsVisible="False"
+                                                RowHeight="70"
+                                                Scrolled="lstVirtualBatteryList_Scrolled"
+                                                SelectionMode="None"
+                                                SeparatorVisibility="None"
+                                                VerticalOptions="FillAndExpand"
+                                                VerticalScrollBarVisibility="Always">
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <ViewCell>
+                                                            <ViewCell.View>
+                                                                <StackLayout
+                                                                    Padding="10,0,0,0"
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    Orientation="Horizontal"
+                                                                    VerticalOptions="CenterAndExpand">
+                                                                    <StackLayout
+                                                                        Margin="0,16,0,0"
+                                                                        HorizontalOptions="Start"
+                                                                        VerticalOptions="CenterAndExpand">
+                                                                        <Label
+                                                                            FontSize="18"
+                                                                            Text="{Binding DeviceName}"
+                                                                            TextColor="#333333" />
+                                                                        <Label
+                                                                            FontSize="14"
+                                                                            Text="{Binding DeviceDetail}"
+                                                                            TextColor="Black" />
+                                                                    </StackLayout>
+                                                                    <StackLayout
+                                                                        HorizontalOptions="EndAndExpand"
+                                                                        IsVisible="{Binding IsVisible}"
+                                                                        VerticalOptions="CenterAndExpand">
+                                                                        <input:CheckBox
+                                                                            Padding="2,0,2,0"
+                                                                            BorderColor="#fc0"
+                                                                            CheckChanged="CheckBox_CheckChanged"
+                                                                            ClassId="{Binding MacAddress}"
+                                                                            HorizontalOptions="EndAndExpand"
+                                                                            IsChecked="{Binding IsChecked, Mode=TwoWay}"
+                                                                            ScaleX="{OnIdiom Phone='1.3',
+                                                                                             Tablet='1.5'}"
+                                                                            ScaleY="{OnIdiom Phone='1.3',
+                                                                                             Tablet='1.5'}"
+                                                                            Type="Regular"
+                                                                            VerticalOptions="EndAndExpand"
+                                                                            Color="#fc0" />
+                                                                    </StackLayout>
+                                                                </StackLayout>
+                                                            </ViewCell.View>
+                                                        </ViewCell>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                            <Label
+                                                x:Name="lblNoVirtualBatteryFound"
+                                                Margin="0,20,0,0"
+                                                FontAttributes="Bold"
+                                                HorizontalOptions="CenterAndExpand"
+                                                IsVisible="False"
+                                                Style="{StaticResource NormalStyle}"
+                                                Text="No virtual battery found"
+                                                TextColor="Red"
+                                                VerticalOptions="FillAndExpand" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Border>
+                            </StackLayout>
+                        </Border>
+                    </StackLayout>
+                </StackLayout>
+
+                <Grid
+                    x:Name="stackButtons"
+                    HorizontalOptions="End"
+                    VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="130" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Image
+                        x:Name="imgBatteryScanHorizontal"
+                        Grid.Row="0"
+                        Margin="{OnIdiom Phone='0,10,0,0',
+                                         Tablet='0,20,0,0'}"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="True"
+                        MaximumHeightRequest="{OnIdiom Phone='70',
+                                                       Tablet='120'}"
+                        Source="scanbatteryicon.png"
+                        VerticalOptions="FillAndExpand" />
+
+                    <Grid
+                        x:Name="stackClickableLinkMain"
+                        Grid.Row="1"
+                        Margin="10,5,10,0"
+                        Padding="0,0,0,0"
+                        HorizontalOptions="Fill"
+                        RowSpacing="0"
+                        VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            x:Name="lblViewAllDevices"
+                            Grid.Row="1"
+                            FontAttributes="Bold"
+                            FontSize="{OnIdiom Phone='19',
+                                               Tablet='21'}"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="View All Devices"
+                            TextColor="#1986fc"
+                            TextDecorations="None"
+                            VerticalOptions="EndAndExpand">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ViewAllDevicesTapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <StackLayout
+                            x:Name="stackClickableLink"
+                            Grid.Row="0"
+                            Margin="5,0,5,5"
+                            HorizontalOptions="Fill"
+                            Orientation="Horizontal"
+                            Spacing="20"
+                            VerticalOptions="End">
+                            <Label
+                                x:Name="lblPrivacyPolicy"
+                                FontAttributes="Bold"
+                                FontSize="{OnIdiom Phone='19',
+                                                   Tablet='21'}"
+                                HorizontalOptions="EndAndExpand"
+                                HorizontalTextAlignment="Center"
+                                Text="Privacy Policy"
+                                TextColor="#1986fc"
+                                TextDecorations="None"
+                                VerticalOptions="End"
+                                VerticalTextAlignment="End">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="onPrivacyTapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Label
+                                x:Name="lblClearCache"
+                                FontAttributes="Bold"
+                                FontSize="{OnIdiom Phone='19',
+                                                   Tablet='21'}"
+                                HorizontalOptions="StartAndExpand"
+                                HorizontalTextAlignment="Center"
+                                Text="Clear Cache"
+                                TextColor="#1986fc"
+                                TextDecorations="None"
+                                VerticalOptions="End"
+                                VerticalTextAlignment="End">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ClearDeviceDataTapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid
+                        x:Name="grdButtonInner"
+                        Grid.Row="2"
+                        Margin="15,5,15,20"
+                        HorizontalOptions="FillAndExpand"
+                        RowSpacing="10"
+                        VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Border
+                            x:Name="btnRemoteSupportNew"
+                            Grid.Row="0"
+                            Margin="0,0,0,0"
+                            BackgroundColor="#4E6DEC"
+                            HeightRequest="{OnIdiom Phone='45',
+                                                    Tablet='55'}"
+                            HorizontalOptions="FillAndExpand"
+                            Stroke="#4E6DEC"
+                            VerticalOptions="FillAndExpand">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10" />
+                            </Border.StrokeShape>
+                            <StackLayout
+                                x:Name="grdRemoteButtonNew"
+                                Padding="10"
+                                HorizontalOptions="CenterAndExpand"
+                                Orientation="Horizontal"
+                                Spacing="7"
+                                VerticalOptions="CenterAndExpand">
+                                <Image
+                                    x:Name="imgRemoteNew"
+                                    HorizontalOptions="Center"
+                                    Source="remotesupport.png"
+                                    Style="{StaticResource ScanPageImgSize}"
+                                    VerticalOptions="CenterAndExpand" />
+                                <Label
+                                    x:Name="lblRemoteNew"
+                                    Margin="0,0,0,0"
+                                    Padding="0,0,5,0"
+                                    HorizontalOptions="Center"
+                                    Style="{StaticResource ScanPageFont}"
+                                    Text="End Remote Support"
+                                    TextColor="White"
+                                    VerticalOptions="FillAndExpand"
+                                    VerticalTextAlignment="Center" />
+                            </StackLayout>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="btnEndRemoteSupprt_Tapped" />
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        <StackLayout
+                            x:Name="stackButtonInner"
+                            Grid.Row="1"
+                            Orientation="Horizontal"
+                            Spacing="{OnIdiom Phone='7',
+                                              Tablet='15'}"
+                            VerticalOptions="FillAndExpand">
+                            <Border
+                                x:Name="btnScanNew"
+                                Margin="0,0,0,0"
+                                BackgroundColor="#F99C00"
+                                HeightRequest="{OnIdiom Phone='70',
+                                                        Tablet='55'}"
+                                HorizontalOptions="FillAndExpand"
+                                Stroke="#F99C00"
+                                VerticalOptions="FillAndExpand">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10" />
+                                </Border.StrokeShape>
+                                <StackLayout
+                                    x:Name="grdScanButtonNew"
+                                    Padding="10"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Orientation="{OnIdiom Phone='Vertical',
+                                                          Tablet='Horizontal'}"
+                                    Spacing="5"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Image
+                                        x:Name="imgScanNew"
+                                        HorizontalOptions="Center"
+                                        Source="scanbattery.png"
+                                        Style="{StaticResource ScanPageImgSize}"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Label
+                                        x:Name="lblScanNew"
+                                        Margin="0,0,0,0"
+                                        Padding="0,0,5,0"
+                                        HorizontalOptions="Center"
+                                        Style="{StaticResource ScanPageFont}"
+                                        Text="Scan"
+                                        TextColor="White"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="btnScan_Clicked" />
+                                </Border.GestureRecognizers>
+                            </Border>
+
+                            <Border
+                                x:Name="btnConnectNew"
+                                Margin="0,0,0,0"
+                                BackgroundColor="#14B729"
+                                HeightRequest="{OnIdiom Phone='70',
+                                                        Tablet='55'}"
+                                HorizontalOptions="FillAndExpand"
+                                Stroke="#14B729"
+                                VerticalOptions="FillAndExpand">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10" />
+                                </Border.StrokeShape>
+                                <StackLayout
+                                    x:Name="grdConnectButtonNew"
+                                    Padding="10"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Orientation="{OnIdiom Phone='Vertical',
+                                                          Tablet='Horizontal'}"
+                                    Spacing="5"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Image
+                                        x:Name="imgConnectNew"
+                                        HorizontalOptions="Center"
+                                        Source="connectbattery.png"
+                                        Style="{StaticResource ScanPageImgSize}"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Label
+                                        x:Name="lblConnectNew"
+                                        Margin="0,0,0,0"
+                                        Padding="0,0,5,0"
+                                        HorizontalOptions="Center"
+                                        Style="{StaticResource ScanPageFont}"
+                                        Text="Connect"
+                                        TextColor="White"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="btnConnect_Clicked" />
+                                </Border.GestureRecognizers>
+                            </Border>
+
+                            <Border
+                                x:Name="btnQuitNew"
+                                Margin="0,0,0,0"
+                                BackgroundColor="#DC2624"
+                                HeightRequest="{OnIdiom Phone='70',
+                                                        Tablet='55'}"
+                                HorizontalOptions="FillAndExpand"
+                                Stroke="#DC2624"
+                                VerticalOptions="FillAndExpand">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10" />
+                                </Border.StrokeShape>
+                                <StackLayout
+                                    x:Name="grdQuitButtonNew"
+                                    Padding="10"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Orientation="{OnIdiom Phone='Vertical',
+                                                          Tablet='Horizontal'}"
+                                    Spacing="5"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Image
+                                        x:Name="imgQuitNew"
+                                        HorizontalOptions="Center"
+                                        Source="quiteapplication.png"
+                                        Style="{StaticResource ScanPageImgSize}"
+                                        VerticalOptions="FillAndExpand" />
+                                    <Label
+                                        x:Name="lblQuitNew"
+                                        Margin="0,0,0,0"
+                                        Padding="0,0,5,0"
+                                        HorizontalOptions="Center"
+                                        Style="{StaticResource ScanPageFont}"
+                                        Text="Quit"
+                                        TextColor="White"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="btnQuite_Clicked" />
+                                </Border.GestureRecognizers>
+                            </Border>
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+            </StackLayout>
+
+        </Grid>
+
+        <!--  Other Design Part Start  -->
+        <StackLayout
+            x:Name="stkBusy"
+            BackgroundColor="#000000"
+            HorizontalOptions="FillAndExpand"
+            InputTransparent="False"
+            IsVisible="False"
+            Opacity="0.6"
+            VerticalOptions="FillAndExpand"
+            ZIndex="98">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+        <Border
+            x:Name="sfbIsBusyIndicator"
+            BackgroundColor="#fff"
+            HeightRequest="260"
+            HorizontalOptions="CenterAndExpand"
+            IsVisible="False"
+            Stroke="White"
+            VerticalOptions="CenterAndExpand"
+            WidthRequest="280"
+            ZIndex="99">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="12" />
+            </Border.StrokeShape>
+            <StackLayout
+                HorizontalOptions="Center"
+                Spacing="10"
+                VerticalOptions="Center">
+                <Image
+                    x:Name="loadingImage"
+                    HeightRequest="150"
+                    HorizontalOptions="Center"
+                    IsAnimationPlaying="True"
+                    Source="loading.gif"
+                    VerticalOptions="Center"
+                    WidthRequest="150" />
+                <!--  Label for Title  -->
+                <Label
+                    x:Name="lblBusyIndicator"
+                    Margin="0,-20,0,0"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource BusyIndicatorStyle}"
+                    Text="Updating..."
+                    TextColor="#F0C000"
+                    VerticalOptions="Center" />
+            </StackLayout>
+        </Border>
+        <Border
+            x:Name="btnCancelAutoConnect"
+            Margin="0,0,0,30"
+            Padding="10,0,0,0"
+            BackgroundColor="#DC2624"
+            HorizontalOptions="CenterAndExpand"
+            IsVisible="false"
+            Stroke="#DC2624"
+            VerticalOptions="EndAndExpand"
+            ZIndex="99">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="11" />
+            </Border.StrokeShape>
+            <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    x:Name="imgCancelAutoConnect"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="2,2,2,2"
+                    HorizontalOptions="EndAndExpand"
+                    Source="cancelbutton.png"
+                    Style="{StaticResource ScanPageImgSize}"
+                    VerticalOptions="CenterAndExpand" />
+                <Label
+                    x:Name="lblCancelAutoConnect"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="10,0,15,0"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource ScanPageFont}"
+                    Text="Cancel"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand" />
+            </Grid>
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="btnCancelAutoConnect_Clicked" />
+            </Border.GestureRecognizers>
+        </Border>
+        <StackLayout
+            x:Name="stkDisplayMessagePopUpBusy"
+            BackgroundColor="#000000"
+            HorizontalOptions="FillAndExpand"
+            InputTransparent="False"
+            IsVisible="False"
+            Opacity="0.6"
+            VerticalOptions="FillAndExpand"
+            ZIndex="98">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+        <Border
+            x:Name="stkDisplayMessagePopUp"
+            Margin="10,0,10,0"
+            Padding="10,0,10,0"
+            BackgroundColor="White"
+            HorizontalOptions="CenterAndExpand"
+            IsVisible="false"
+            Stroke="White"
+            VerticalOptions="CenterAndExpand"
+            ZIndex="99">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="12" />
+            </Border.StrokeShape>
+            <StackLayout Padding="0,30,0,30" HorizontalOptions="CenterAndExpand">
+                <Image
+                    x:Name="imgDisplay"
+                    HorizontalOptions="FillAndExpand"
+                    Source="settingsupdated.png"
+                    Style="{StaticResource SuccesPopupImageHeight}"
+                    VerticalOptions="StartAndExpand" />
+                <Label
+                    x:Name="lblText"
+                    FontAttributes="Bold"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource PopupFontSize}"
+                    Text=""
+                    TextColor="#2D2D2D"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+                <StackLayout
+                    x:Name="stackCancelAndYesButton"
+                    HorizontalOptions="CenterAndExpand"
+                    IsVisible="False"
+                    Orientation="Horizontal"
+                    VerticalOptions="EndAndExpand">
+                    <Border
+                        x:Name="sbbtn1"
+                        Margin="0,0,0,0"
+                        Padding="10,0,10,0"
+                        BackgroundColor="#39B54A"
+                        ClassId="Procced"
+                        HorizontalOptions="Center"
+                        Stroke="#39B54A"
+                        VerticalOptions="CenterAndExpand">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="6" />
+                        </Border.StrokeShape>
+                        <StackLayout
+                            Margin="8,8,8,8"
+                            ClassId="Yes"
+                            HorizontalOptions="CenterAndExpand"
+                            Orientation="Horizontal">
+                            <Image
+                                x:Name="imgyes"
+                                HeightRequest="25"
+                                Source="yes.png"
+                                WidthRequest="35" />
+                            <Label
+                                x:Name="lblContinue"
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                HorizontalTextAlignment="Start"
+                                Text="Continue"
+                                TextColor="#fff"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="btnConfirmORDecline_Tapped" />
+                        </Border.GestureRecognizers>
+                    </Border>
+                    <StackLayout WidthRequest="10" />
+                    <Border
+                        x:Name="sbbtn2"
+                        Margin="0,0,0,0"
+                        Padding="10,0,10,0"
+                        BackgroundColor="#DC2624"
+                        ClassId="Cancel"
+                        HorizontalOptions="Center"
+                        Stroke="#DC2624"
+                        VerticalOptions="CenterAndExpand">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="6" />
+                        </Border.StrokeShape>
+                        <StackLayout
+                            Margin="8,8,8,8"
+                            ClassId="Cancel"
+                            HorizontalOptions="CenterAndExpand"
+                            Orientation="Horizontal">
+                            <Image
+                                x:Name="imgDecline"
+                                HeightRequest="25"
+                                Source="cancelbutton.png"
+                                WidthRequest="35" />
+                            <Label
+                                x:Name="lblDecline"
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="Decline"
+                                TextColor="#fff"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="btnConfirmORDecline_Tapped" />
+                        </Border.GestureRecognizers>
+                    </Border>
+                </StackLayout>
+                <Border
+                    x:Name="btnRetryAndOK"
+                    Padding="20,0,20,0"
+                    BackgroundColor="#39B54A"
+                    HorizontalOptions="CenterAndExpand"
+                    Stroke="#39B54A"
+                    VerticalOptions="EndAndExpand">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="6" />
+                    </Border.StrokeShape>
+                    <StackLayout
+                        Margin="5,5,5,5"
+                        ClassId="RetryAndOk"
+                        Orientation="Horizontal">
+                        <Image
+                            x:Name="imgRetryAndOK"
+                            HeightRequest="30"
+                            Source="yes.png" />
+                        <Label
+                            x:Name="lblRetryAndOK"
+                            Padding="20,3,20,0"
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="Ok"
+                            TextColor="#fff">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    ClassId="RetryAndOk"
+                                    NumberOfTapsRequired="1"
+                                    Tapped="DisplayPopup_Clicked" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="DisplayPopup_Clicked" />
+                    </Border.GestureRecognizers>
+                </Border>
+            </StackLayout>
+        </Border>
+        <Border
+            x:Name="stkPermissionRequiredPopUp"
+            Margin="10,0,10,0"
+            Padding="10,0,10,0"
+            BackgroundColor="White"
+            HorizontalOptions="CenterAndExpand"
+            IsVisible="false"
+            Stroke="White"
+            VerticalOptions="CenterAndExpand"
+            ZIndex="99">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="12" />
+            </Border.StrokeShape>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="70" />
+                </Grid.RowDefinitions>
+                <Label
+                    Grid.Row="0"
+                    Margin="0,15,0,10"
+                    FontAttributes="Bold"
+                    FontSize="23"
+                    HorizontalTextAlignment="Center"
+                    Text="Permission required"
+                    TextColor="#2D2D2D"
+                    TextDecorations="Underline" />
+                <ScrollView
+                    Grid.Row="1"
+                    Margin="0,-10,0,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Vertical">
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <StackLayout HeightRequest="15" />
+                        <StackLayout
+                            HorizontalOptions="StartAndExpand"
+                            Orientation="Horizontal"
+                            VerticalOptions="StartAndExpand">
+                            <StackLayout HorizontalOptions="Start">
+                                <Image
+                                    Margin="0,0,10,0"
+                                    HeightRequest="50"
+                                    HorizontalOptions="FillAndExpand"
+                                    Source="prblutooth.png"
+                                    VerticalOptions="StartAndExpand" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="17"
+                                    HorizontalOptions="Fill"
+                                    Text="Sun Fun Kits Android app requires Location services to be enabled in order to use BLE Bluetooth communication."
+                                    TextColor="#2D2D2D"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout HeightRequest="15" />
+                        <StackLayout
+                            HorizontalOptions="StartAndExpand"
+                            Orientation="Horizontal"
+                            VerticalOptions="StartAndExpand">
+                            <StackLayout HorizontalOptions="Start">
+                                <Image
+                                    Margin="0,0,10,0"
+                                    HeightRequest="50"
+                                    HorizontalOptions="FillAndExpand"
+                                    Source="prlocation.png"
+                                    VerticalOptions="StartAndExpand" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="17"
+                                    HorizontalOptions="Fill"
+                                    Text="Location: BLE communication is needed to get updates from the battery."
+                                    TextColor="#2D2D2D"
+                                    VerticalOptions="StartAndExpand" />
+                                <Label
+                                    Padding="0,5,0,0"
+                                    FontAttributes="Bold"
+                                    FontSize="17"
+                                    HorizontalOptions="Fill"
+                                    Text="GPS: GPS is required for Auto Dashboard functionality and may not work properly without GPS and Locations permissions."
+                                    TextColor="#2D2D2D"
+                                    VerticalOptions="StartAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout HeightRequest="15" />
+                        <StackLayout
+                            HorizontalOptions="StartAndExpand"
+                            Orientation="Horizontal"
+                            VerticalOptions="StartAndExpand">
+                            <StackLayout HorizontalOptions="Start">
+                                <Image
+                                    Margin="0,0,10,0"
+                                    HeightRequest="50"
+                                    HorizontalOptions="StartAndExpand"
+                                    Source="prinformation.png"
+                                    VerticalOptions="StartAndExpand" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="17"
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="Collection: No information regarding app usage or interaction is stored or transmitted back to Sun Fun Kits."
+                                    TextColor="#2D2D2D"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout HeightRequest="15" />
+                        <StackLayout
+                            HorizontalOptions="StartAndExpand"
+                            Orientation="Horizontal"
+                            VerticalOptions="StartAndExpand">
+                            <StackLayout HorizontalOptions="Start">
+                                <Image
+                                    Margin="0,0,10,0"
+                                    HeightRequest="50"
+                                    HorizontalOptions="StartAndExpand"
+                                    Source="prbackground.png"
+                                    VerticalOptions="StartAndExpand" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="17"
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="Background: BLE communication with the battery will continue until you close / quit the app. BLE communication will continue in the background until you close the app."
+                                    TextColor="#2D2D2D"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout HeightRequest="15" />
+                        <StackLayout
+                            HorizontalOptions="StartAndExpand"
+                            Orientation="Horizontal"
+                            VerticalOptions="StartAndExpand">
+                            <StackLayout HorizontalOptions="Start">
+                                <Image
+                                    Margin="0,0,10,0"
+                                    HeightRequest="50"
+                                    HorizontalOptions="StartAndExpand"
+                                    Source="prprivacy.png"
+                                    VerticalOptions="StartAndExpand" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="17"
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="Privacy: You can view our full privacy policy on our website or in the link below in this app."
+                                    TextColor="#2D2D2D"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout HeightRequest="15" />
+                        <StackLayout
+                            HorizontalOptions="StartAndExpand"
+                            Orientation="Horizontal"
+                            VerticalOptions="StartAndExpand">
+                            <StackLayout HorizontalOptions="Start">
+                                <Image
+                                    Margin="0,0,10,0"
+                                    HeightRequest="50"
+                                    HorizontalOptions="StartAndExpand"
+                                    Source="prnoads.png"
+                                    VerticalOptions="StartAndExpand" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="17"
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="Ads: This app does not have any ads.                                                             "
+                                    TextColor="#2D2D2D"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout HeightRequest="15" />
+                    </StackLayout>
+                </ScrollView>
+                <StackLayout
+                    Grid.Row="2"
+                    Padding="10"
+                    HorizontalOptions="CenterAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="EndAndExpand">
+                    <Border
+                        Margin="0,0,10,0"
+                        Padding="10,0,10,0"
+                        BackgroundColor="#39B54A"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="#39B54A"
+                        VerticalOptions="CenterAndExpand">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="6" />
+                        </Border.StrokeShape>
+                        <StackLayout
+                            Margin="10"
+                            ClassId="Yes"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal">
+                            <Image
+                                Margin="0,0,5,0"
+                                HeightRequest="22"
+                                Source="yes.png"
+                                WidthRequest="22" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HorizontalTextAlignment="Start"
+                                Text="Ok"
+                                TextColor="#fff"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="DisplayPopupYes_Clicked" />
+                        </Border.GestureRecognizers>
+                    </Border>
+                    <!--<StackLayout WidthRequest="5" />
+                 <Border
+                     Padding="10,0,10,0"
+                     BackgroundColor="#DC2624"
+                     HorizontalOptions="CenterAndExpand"
+                     Stroke="#DC2624"
+                     VerticalOptions="CenterAndExpand">
+                     <Border.StrokeShape>
+                         <RoundRectangle CornerRadius="6" />
+                     </Border.StrokeShape>
+                     <StackLayout
+                         Margin="10"
+                         ClassId="Cancel"
+                         Orientation="Horizontal">
+                         <Image
+                             x:Name="imgCancel"
+                             Margin="0,0,5,0"
+                             HeightRequest="22"
+                             Source="cancelbutton.png" />
+                         <Label
+                             x:Name="lblCancel"
+                             FontAttributes="Bold"
+                             FontSize="20"
+                             Text="Cancel"
+                             TextColor="#fff"
+                             VerticalTextAlignment="Center" />
+                     </StackLayout>
+                     <Border.GestureRecognizers>
+                         <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="DisplayPopup_Clicked" />
+                     </Border.GestureRecognizers>
+                 </Border>-->
+                </StackLayout>
+            </Grid>
+        </Border>
+        <StackLayout
+            x:Name="stackProgressBarMain"
+            BackgroundColor="Transparent"
+            HorizontalOptions="FillAndExpand"
+            IsVisible="False"
+            VerticalOptions="FillAndExpand"
+            ZIndex="99">
+            <Border
+                x:Name="brdProgressBar"
+                BackgroundColor="White"
+                HorizontalOptions="CenterAndExpand"
+                IsVisible="True"
+                Stroke="White"
+                VerticalOptions="CenterAndExpand">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12" />
+                </Border.StrokeShape>
+                <StackLayout
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Vertical"
+                    VerticalOptions="FillAndExpand">
+                    <Grid
+                        x:Name="stackProgressBar"
+                        Margin="0,0,0,0"
+                        HeightRequest="270"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="270">
+                        <progressBar:SfCircularProgressBar
+                            x:Name="ProgressBarPointer"
+                            BackgroundColor="White"
+                            HeightRequest="210"
+                            HorizontalOptions="CenterAndExpand"
+                            Progress="0"
+                            ProgressCornerStyle="BothCurve"
+                            ProgressFill="#39B54A"
+                            ProgressThickness="13"
+                            ThicknessUnit="Pixel"
+                            TrackThickness="13"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="210" />
+                        <Label
+                            x:Name="lblProgressBar"
+                            FontAttributes="Bold"
+                            FontSize="40"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="0%"
+                            TextColor="#39B54A"
+                            VerticalOptions="CenterAndExpand" />
+                    </Grid>
+                    <Label
+                        Margin="0,-15,0,20"
+                        FontAttributes="Bold"
+                        FontSize="22"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Restoring Settings..."
+                        TextColor="#39B54A"
+                        VerticalOptions="StartAndExpand" />
+                </StackLayout>
+            </Border>
+        </StackLayout>
+        <StackLayout
+            x:Name="stackPasswordBusy"
+            BackgroundColor="#000"
+            InputTransparent="False"
+            IsVisible="false"
+            Opacity="0.6"
+            ZIndex="98">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+        <StackLayout
+            x:Name="EnterPassword"
+            Margin="0,0,0,0"
+            BackgroundColor="Transparent"
+            HorizontalOptions="CenterAndExpand"
+            IsVisible="false"
+            Orientation="Vertical"
+            VerticalOptions="CenterAndExpand"
+            ZIndex="99">
+
+            <Border
+                Margin="0"
+                Padding="10"
+                BackgroundColor="#fff"
+                HorizontalOptions="CenterAndExpand"
+                Stroke="White"
+                VerticalOptions="CenterAndExpand">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+                <StackLayout BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand">
+                    <Image
+                        x:Name="imgLock"
+                        Margin="0,10,0,0"
+                        BackgroundColor="Transparent"
+                        HeightRequest="80"
+                        HorizontalOptions="CenterAndExpand"
+                        Source="lock.png"
+                        VerticalOptions="Fill" />
+                    <Label
+                        x:Name="lblEnterPin"
+                        Padding="0,10,0,0"
+                        FontAttributes="Bold"
+                        FontSize="25"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Enter PIN"
+                        TextColor="#14B729"
+                        VerticalOptions="CenterAndExpand" />
+                    <pinview:PINView
+                        x:Name="txtBatteryPassword"
+                        Padding="0,10,0,10"
+                        AutoDismissKeyboard="True"
+                        BoxBackgroundColor="#ffffff"
+                        BoxBorderColor="#757575"
+                        BoxFocusAnimation="ZoomInOut"
+                        BoxFocusColor="#f0c000"
+                        BoxShape="Square"
+                        BoxSpacing="12"
+                        HorizontalOptions="CenterAndExpand"
+                        IsPassword="False"
+                        PINInputType="Numeric"
+                        PINLength="6"
+                        PINValue="{Binding PIN}"
+                        VerticalOptions="CenterAndExpand"
+                        Color="#f0c000" />
+
+                    <StackLayout
+                        Padding="7"
+                        HorizontalOptions="CenterAndExpand"
+                        Orientation="Horizontal"
+                        Spacing="-10"
+                        VerticalOptions="CenterAndExpand">
+                        <input:CheckBox
+                            x:Name="chkRememberSettingsForSingle"
+                            BorderColor="#707070"
+                            HorizontalOptions="CenterAndExpand"
+                            ScaleX="1.2"
+                            ScaleY="1.2"
+                            Type="Regular"
+                            VerticalOptions="CenterAndExpand"
+                            Color="#fc0" />
+                        <Label
+                            FontSize="20"
+                            Text="Remember Device Pin"
+                            TextColor="Black"
+                            VerticalTextAlignment="Center" />
+                    </StackLayout>
+
+                    <StackLayout
+                        Margin="10,10,10,10"
+                        HorizontalOptions="CenterAndExpand"
+                        Orientation="Horizontal"
+                        Spacing="10">
+                        <Border
+                            HorizontalOptions="EndAndExpand"
+                            Stroke="Transparent"
+                            VerticalOptions="CenterAndExpand">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8" />
+                            </Border.StrokeShape>
+                            <Grid
+                                x:Name="btnConnectForPin"
+                                Padding="10,10,10,10"
+                                BackgroundColor="#14B729">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="90" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    HeightRequest="20"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Source="connectbattery.png"
+                                    VerticalOptions="CenterAndExpand" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Padding="0,-5,0,0"
+                                    FontSize="22"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="Connect"
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand" />
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="btnConfirmUserPassword_Clicked" />
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </Border>
+                        <Border
+                            Margin="0,0,0,0"
+                            HorizontalOptions="CenterAndExpand"
+                            Stroke="Transparent"
+                            VerticalOptions="CenterAndExpand">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8" />
+                            </Border.StrokeShape>
+                            <Grid Padding="10,10,10,10" BackgroundColor="#DC2624">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="90" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Margin="0,0,0,0"
+                                    HeightRequest="20"
+                                    HorizontalOptions="StartAndExpand"
+                                    Source="cancelbutton.png"
+                                    VerticalOptions="CenterAndExpand" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="0,0,0,0"
+                                    Padding="0,-5,0,0"
+                                    FontSize="22"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="Cancel"
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand" />
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="btnCancelEnterPassword_Clicked" />
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </Border>
+                    </StackLayout>
+
+                    <StackLayout
+                        x:Name="stackIncorrectPasswordMsg"
+                        Margin="10,0,10,0"
+                        HorizontalOptions="CenterAndExpand"
+                        IsVisible="false"
+                        Orientation="Horizontal">
+                        <Label
+                            x:Name="lblPasswordMessage"
+                            FontSize="18"
+                            IsVisible="true"
+                            Text=""
+                            TextColor="Red" />
+                    </StackLayout>
+                </StackLayout>
+            </Border>
+        </StackLayout>
+        <!--  Remote Connection Start  -->
+        <StackLayout
+            x:Name="stackRemoteSessonList"
+            Padding="0,0,0,0"
+            BackgroundColor="White"
+            HorizontalOptions="FillAndExpand"
+            IsVisible="False"
+            VerticalOptions="FillAndExpand">
+            <StackLayout
+                Margin="{OnIdiom Phone='0,10,0,0',
+                                 Tablet='0,0,0,10'}"
+                Padding="{OnIdiom Phone='15,0,15,20',
+                                  Tablet='30,0,30,20'}"
+                HorizontalOptions="FillAndExpand"
+                Spacing="25"
+                VerticalOptions="FillAndExpand">
+                <StackLayout
+                    Margin="{OnIdiom Phone='0,15,0,0',
+                                     Tablet='0,30,0,0'}"
+                    HorizontalOptions="CenterAndExpand"
+                    Spacing="5"
+                    VerticalOptions="Start">
+                    <Image
+                        x:Name="stacksfklogo"
+                        HeightRequest="{OnIdiom Phone=40,
+                                                Tablet=60}"
+                        HorizontalOptions="Center"
+                        Source="sunfunkitslogowtb.png"
+                        VerticalOptions="Start" />
+                    <Label
+                        Margin="0,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="{OnIdiom Phone=18,
+                                           Tablet=20}"
+                        HorizontalTextAlignment="Center"
+                        Text="V9.38"
+                        TextColor="Black"
+                        VerticalTextAlignment="Center" />
+                </StackLayout>
+                <Frame
+                    Padding="0"
+                    CornerRadius="24"
+                    HasShadow="True"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+
+                    <StackLayout VerticalOptions="FillAndExpand">
+                        <!--  HEADER  -->
+                        <Grid
+                            Padding="16,12"
+                            BackgroundColor="#E3E3E3"
+                            ColumnDefinitions="{OnIdiom Phone='2*,2*,2*,2.5*',
+                                                        Tablet='1.5*,1.5*,1.5*,1*'}">
+
+                            <Label
+                                Grid.Column="0"
+                                Margin="5,0,0,0"
+                                FontAttributes="Bold"
+                                FontSize="{OnIdiom Phone=16,
+                                                   Tablet=18}"
+                                HorizontalTextAlignment="Start"
+                                Text="Date"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                Grid.Column="1"
+                                FontAttributes="Bold"
+                                FontSize="{OnIdiom Phone=16,
+                                                   Tablet=18}"
+                                HorizontalTextAlignment="Start"
+                                Text="Status"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                Grid.Column="2"
+                                FontAttributes="Bold"
+                                FontSize="{OnIdiom Phone=16,
+                                                   Tablet=18}"
+                                HorizontalTextAlignment="Start"
+                                Text="Name"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center" />
+                            <!--<Label
+                                Grid.Column="3"
+                                FontAttributes="Bold"
+                                FontSize="{OnIdiom Phone=16,
+                                                   Tablet=18}"
+                                HorizontalTextAlignment="Start"
+                                Text="PIN"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center" />-->
+                            <Label
+                                Grid.Column="3"
+                                Margin="0,0,5,0"
+                                FontAttributes="Bold"
+                                FontSize="{OnIdiom Phone=16,
+                                                   Tablet=18}"
+                                HorizontalTextAlignment="End"
+                                Text="Action"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center" />
+                        </Grid>
+
+                        <!--  LIST  -->
+                        <ListView
+                            x:Name="lstRemoteConnection"
+                            BackgroundColor="#F5F5F5"
+                            HasUnevenRows="True"
+                            IsVisible="True"
+                            SelectionMode="None"
+                            SeparatorVisibility="None">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid
+                                            Padding="10,12"
+                                            ColumnDefinitions="{OnIdiom Phone='2*,2*,2*,2.5*',
+                                                                        Tablet='1.5*,1.5*,1.5*,1*'}"
+                                            VerticalOptions="Center">
+
+                                            <!--  DATE + TIME (2 LINES)  -->
+                                            <StackLayout
+                                                Grid.Column="0"
+                                                Spacing="2"
+                                                VerticalOptions="Start">
+                                                <Label
+                                                    FontSize="{OnIdiom Phone=14,
+                                                                       Tablet=16}"
+                                                    Text="{Binding CreatedDate, StringFormat='{0:dd/MM/yy}'}"
+                                                    TextColor="Black" />
+
+                                                <Label
+                                                    FontSize="{OnIdiom Phone=13,
+                                                                       Tablet=15}"
+                                                    Text="{Binding CreatedDate, StringFormat='{0:HH:mm:ss}'}"
+                                                    TextColor="#555555" />
+                                            </StackLayout>
+
+                                            <!--  STATUS  -->
+                                            <Label
+                                                Grid.Column="1"
+                                                FontAttributes="Bold"
+                                                FontSize="{OnIdiom Phone=13,
+                                                                   Tablet=17}"
+                                                HorizontalTextAlignment="Start"
+                                                Text="{Binding SessionStatus}"
+                                                TextColor="{Binding SessionStatus, Converter={StaticResource StatusToColorConverter}}"
+                                                VerticalTextAlignment="Center" />
+
+                                            <!--  Customer Name (ALIGNED WITH HEADER)  -->
+                                            <Label
+                                                Grid.Column="2"
+                                                FontSize="{OnIdiom Phone=14,
+                                                                   Tablet=17}"
+                                                HorizontalTextAlignment="Start"
+                                                LineBreakMode="TailTruncation"
+                                                Text="{Binding CustomerName}"
+                                                TextColor="Black"
+                                                VerticalTextAlignment="Center" />
+
+                                            <!--  PIN OR ACTION BUTTONS  -->
+                                            <Grid
+                                                Grid.Column="3"
+                                                HorizontalOptions="End"
+                                                VerticalOptions="Center">
+                                                <!--  PIN SECTION  -->
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BackgroundColor="#FFF3CD"
+                                                    BorderColor="#FFC107"
+                                                    CornerRadius="6"
+                                                    HasShadow="False"
+                                                    HorizontalOptions="End"
+                                                    VerticalOptions="Center">
+                                                    <Frame.Triggers>
+                                                        <DataTrigger
+                                                            Binding="{Binding SessionStatus}"
+                                                            TargetType="Frame"
+                                                            Value="PENDING">
+                                                            <Setter Property="IsVisible" Value="True" />
+                                                        </DataTrigger>
+                                                    </Frame.Triggers>
+
+                                                    <Frame.Style>
+                                                        <Style TargetType="Frame">
+                                                            <Setter Property="IsVisible" Value="False" />
+                                                        </Style>
+                                                    </Frame.Style>
+
+                                                    <StackLayout Orientation="Horizontal" Spacing="5">
+                                                        <Label
+                                                            CharacterSpacing="3"
+                                                            FontAttributes="Bold"
+                                                            FontSize="{OnIdiom Phone=17,
+                                                                               Tablet=18}"
+                                                            Text="{Binding VerificationPIN}"
+                                                            TextColor="Black"
+                                                            VerticalTextAlignment="Center" />
+                                                    </StackLayout>
+                                                </Frame>
+                                                <!--  ACTION BUTTONS  -->
+                                                <StackLayout
+                                                    HorizontalOptions="End"
+                                                    Orientation="Horizontal"
+                                                    Spacing="5">
+                                                    <StackLayout.Triggers>
+                                                        <DataTrigger
+                                                            Binding="{Binding SessionStatus}"
+                                                            TargetType="StackLayout"
+                                                            Value="PENDING">
+                                                            <Setter Property="IsVisible" Value="False" />
+                                                        </DataTrigger>
+                                                    </StackLayout.Triggers>
+                                                    <ImageButton
+                                                        x:Name="imgbtnAcceptRequest"
+                                                        ClassId="{Binding DeviceID}"
+                                                        Clicked="imgbtnAcceptRequest_Clicked"
+                                                        HeightRequest="35"
+                                                        HorizontalOptions="End"
+                                                        IsEnabled="{Binding ClickEnable}"
+                                                        Source="{Binding EnableImage}"
+                                                        WidthRequest="35" />
+                                                    <ImageButton
+                                                        x:Name="imgbtnDeclineRequest"
+                                                        ClassId="{Binding DeviceID}"
+                                                        Clicked="imgbtnDeclineRequest_Clicked"
+                                                        HeightRequest="35"
+                                                        HorizontalOptions="End"
+                                                        IsEnabled="{Binding ClickEnable}"
+                                                        Source="{Binding DisableImage}"
+                                                        WidthRequest="35" />
+                                                </StackLayout>
+                                            </Grid>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <Label
+                            x:Name="lblNotFound"
+                            Margin="0,20,0,20"
+                            FontAttributes="Bold"
+                            FontSize="{OnIdiom Phone=15,
+                                               Tablet=17}"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="No Request Found."
+                            TextColor="red"
+                            VerticalOptions="FillAndExpand"
+                            VerticalTextAlignment="Center" />
+                    </StackLayout>
+                </Frame>
+                <StackLayout
+                    HorizontalOptions="Center"
+                    IsVisible="True"
+                    Orientation="Horizontal"
+                    Spacing="10"
+                    VerticalOptions="End">
+                    <Frame
+                        x:Name="btnClearAll"
+                        Padding="15,10"
+                        BackgroundColor="#14B729"
+                        CornerRadius="6">
+                        <StackLayout Orientation="Horizontal" Spacing="8">
+                            <Image
+                                HeightRequest="20"
+                                Source="delete.png"
+                                VerticalOptions="Center"
+                                WidthRequest="20" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="{OnIdiom Phone=16,
+                                                   Tablet=19}"
+                                Text="Clear All"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btnClearAll_Tapped" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <Frame
+                        x:Name="btnMuteAll"
+                        Padding="15,10"
+                        BackgroundColor="#f90b0b"
+                        CornerRadius="6">
+                        <StackLayout Orientation="Horizontal" Spacing="8">
+                            <Image
+                                HeightRequest="20"
+                                Source="mute.png"
+                                VerticalOptions="Center"
+                                WidthRequest="20" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="{OnIdiom Phone=16,
+                                                   Tablet=19}"
+                                Text="Mute"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btnMuteAll_Tapped" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+        <!--  Remote Connection End  -->
+    </Grid>
+</ContentPage>

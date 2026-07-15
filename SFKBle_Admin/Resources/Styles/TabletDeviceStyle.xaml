@@ -1,0 +1,774 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary
+    x:Class="SFKBle_Admin.TabletDeviceStyle"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:gauge="clr-namespace:Syncfusion.Maui.Gauges;assembly=Syncfusion.Maui.Gauges"
+    xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView">
+
+    <!--  Scan Page Style Start  -->
+
+    <!--  Lable  -->
+
+    <Style x:Key="ScanTabFont" TargetType="Label">
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="BusyIndicatorStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontAutoScalingEnabled" Value="False" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="DetailsTabImage" TargetType="Image">
+        <Setter Property="WidthRequest" Value=" 60" />
+        <Setter Property="HeightRequest" Value="60" />
+    </Style>
+
+
+    <Style x:Key="ScanPageFont" TargetType="Label">
+        <Setter Property="FontSize" Value="23" />
+    </Style>
+
+    <Style x:Key="lblSinceFullCharge" TargetType="Label">
+        <Setter Property="FontSize" Value="25" />
+    </Style>
+
+    <Style x:Key="lblSinceFullChargeSecound" TargetType="Label">
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <Style x:Key="PinViewDesign" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Vertical" />
+        <Setter Property="Spacing" Value="15" />
+    </Style>
+
+
+
+    <!--  Image  -->
+    <Style x:Key="ScanPageImgSize" TargetType="Image">
+        <Setter Property="HeightRequest" Value="30" />
+    </Style>
+
+    <!--  Scan Page Style End  -->
+
+
+    <!--  Home Page Style Start  -->
+
+    <!--  Lable  -->
+    <Style x:Key="SOCModeImage" TargetType="Image">
+        <Setter Property="WidthRequest" Value="120" />
+        <Setter Property="HeightRequest" Value="120" />
+    </Style>
+
+    <Style x:Key="SOCModeLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="33" />
+    </Style>
+
+    <Style x:Key="HomePageIndicatorSize" TargetType="StackLayout">
+        <Setter Property="WidthRequest" Value="40" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="Margin" Value="10,10,0,10" />
+    </Style>
+
+    <Style x:Key="UpdateIconSize" TargetType="Image">
+        <Setter Property="WidthRequest" Value="40" />
+        <Setter Property="HeightRequest" Value="40" />
+    </Style>
+
+    <Style x:Key="SOCFontSizeTitle" TargetType="Label">
+        <Setter Property="FontSize" Value="30" />
+    </Style>
+
+    <Style x:Key="SOCFontSize" TargetType="Label">
+        <Setter Property="FontSize" Value="120" />
+        <Setter Property="Padding" Value="0,-20,0,0" />
+    </Style>
+
+    <Style x:Key="NormalStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="22" />
+    </Style>
+
+    <Style x:Key="RadioNormalStyle" TargetType="input:RadioButton">
+        <Setter Property="TextFontSize" Value="22" />
+    </Style>
+
+    <Style x:Key="RadioNormalStyleCalibration" TargetType="input:RadioButton">
+        <Setter Property="TextFontSize" Value="22" />
+    </Style>
+
+    <Style x:Key="WarningFontStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="22" />
+    </Style>
+
+    <Style x:Key="UpdatingHomeValue" TargetType="Image">
+        <Setter Property="WidthRequest" Value="40" />
+        <Setter Property="HeightRequest" Value="40" />
+    </Style>
+
+    <Style x:Key="SocStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <Style x:Key="SocValueStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="27" />
+    </Style>
+
+    <Style x:Key="StatusStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="23" />
+    </Style>
+
+    <Style x:Key="MenuStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="24" />
+    </Style>
+
+    <!--  Image  -->
+    <Style x:Key="WarningImageStyle" TargetType="Image">
+        <Setter Property="HeightRequest" Value="75" />
+        <Setter Property="WidthRequest" Value="75" />
+    </Style>
+
+    <Style x:Key="WarningImageStyle2" TargetType="Image">
+        <Setter Property="HeightRequest" Value="75" />
+        <Setter Property="WidthRequest" Value="75" />
+    </Style>
+
+    <Style x:Key="stackBMSDetailsOuter" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Vertical" />
+    </Style>
+
+    <Style x:Key="stackBMSDetailsInner" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Horizontal" />
+    </Style>
+
+    <Style x:Key="RemaingandCycleStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="23" />
+    </Style>
+
+    <!--  Home Page Style End  -->
+
+
+    <!--  Detail Style Start  -->
+
+    <Style x:Key="DetailFontSize" TargetType="Label">
+        <Setter Property="Padding" Value="0,10,0,0" />
+        <Setter Property="FontSize" Value="25" />
+    </Style>
+
+    <!--  Detail Style End  -->
+
+
+    <!--  ToolTab Page Style Start  -->
+
+    <Style x:Key="ToolTabButtonStyle" TargetType="buttons:SfButton">
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Padding" Value="5,-5,5,0" />
+    </Style>
+
+    <Style x:Key="ToolTabButtonStyleForButton" TargetType="Button">
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Padding" Value="5,-5,5,0" />
+    </Style>
+
+    <!--  Lable  -->
+    <Style x:Key="SettingTextFontSize" TargetType="Label">
+        <Setter Property="FontSize" Value="30" />
+    </Style>
+
+    <Style x:Key="PopupFontSize" TargetType="Label">
+        <Setter Property="FontSize" Value="22" />
+    </Style>
+
+    <!--  Image  -->
+    <Style x:Key="SuccesPopupImageHeight" TargetType="Image">
+        <Setter Property="HeightRequest" Value="80" />
+    </Style>
+
+    <Style x:Key="ClosePopupImageHeight" TargetType="Image">
+        <Setter Property="HeightRequest" Value="50" />
+    </Style>
+
+
+    <!--  ToolTab Page Style End  -->
+
+    <!--  Benchmark Page Style Start  -->
+
+    <Style x:Key="BenchmarkDetailsStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="24" />
+    </Style>
+
+    <Style x:Key="BenchmarkDetailsValueStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="35" />
+    </Style>
+
+    <Style x:Key="BenchmarkDetailsSocValueStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="60" />
+    </Style>
+
+    <Style x:Key="BenchmarkDetailsSocStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="30" />
+    </Style>
+
+    <Style x:Key="BenchmarkMainStack" TargetType="StackLayout">
+        <Setter Property="Margin" Value="50,30,50,0" />
+    </Style>
+
+    <Style x:Key="BenchmarkTestButtons" TargetType="Button">
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <!--  Benchmark Page Style End  -->
+
+    <!--  Password Page Style Start  -->
+
+    <!--  Lable  -->
+    <Style x:Key="DevicePinFontSize" TargetType="Label">
+        <Setter Property="FontSize" Value="25" />
+    </Style>
+
+    <Style x:Key="ModelNameFontSize" TargetType="Label">
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <Style x:Key="ButtonFontSize" TargetType="Label">
+        <Setter Property="FontSize" Value="24" />
+    </Style>
+
+    <Style x:Key="BenchmarkGaugesStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="22" />
+    </Style>
+
+    <Style x:Key="AboutFontStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="22" />
+    </Style>
+
+    <!--  Password Page Style End  -->
+
+    <!--  Multi Main Page Style Start  -->
+
+    <Style x:Key="MultiMainStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="22" />
+    </Style>
+
+    <Style x:Key="DeviceSOCValue" TargetType="Label">
+        <Setter Property="FontSize" Value="50" />
+    </Style>
+
+    <Style x:Key="MultiMainWarningImage" TargetType="Image">
+        <Setter Property="WidthRequest" Value="45" />
+        <Setter Property="HeightRequest" Value="45" />
+        <Setter Property="Margin" Value="0,4,0,1" />
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+    </Style>
+
+    <Style x:Key="MultiSocStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <Style x:Key="MultiSocValueStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="24" />
+    </Style>
+
+    <Style x:Key="MultiMainDetail" TargetType="Label">
+        <Setter Property="FontSize" Value="25" />
+    </Style>
+
+    <Style x:Key="MultiSetupStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="23" />
+    </Style>
+
+    <Style x:Key="BatteryConnectionSetupFont" TargetType="Label">
+        <Setter Property="FontSize" Value="30" />
+    </Style>
+
+    <Style x:Key="NewFirmwareComponent" TargetType="StackLayout">
+        <Setter Property="Margin" Value="7,2,0,1" />
+    </Style>
+
+    <Style x:Key="ValueIconStyle" TargetType="Image">
+        <Setter Property="HeightRequest" Value="45" />
+        <Setter Property="WidthRequest" Value="45" />
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+    </Style>
+
+    <Style x:Key="MainNameAndValueLabelStyle" TargetType="StackLayout">
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+    </Style>
+
+    <Style x:Key="NameLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="IsVisible" Value="false" />
+        <Setter Property="IsEnabled" Value="False" />
+    </Style>
+
+    <Style x:Key="ValueLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="Margin" Value="0,2,0,0" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        <Setter Property="VerticalOptions" Value="StartAndExpand" />
+    </Style>
+
+    <Style x:Key="stackNFMainBMSDetails" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Vertical" />
+        <Setter Property="Spacing" Value="5" />
+        <Setter Property="Margin" Value="0,0,0,5" />
+        <Setter Property="Padding" Value="10,0,10,0" />
+        <Setter Property="HorizontalOptions" Value="Fill" />
+        <Setter Property="VerticalOptions" Value="StartAndExpand" />
+    </Style>
+
+    <Style x:Key="stackMainBMSDetails" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Vertical" />
+        <Setter Property="Margin" Value="0,0,0,5" />
+        <Setter Property="Padding" Value="5,0,10,0" />
+        <Setter Property="Spacing" Value="5" />
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        <Setter Property="VerticalOptions" Value="StartAndExpand" />
+    </Style>
+
+    <Style x:Key="stackMainBMSDetailsWatts" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Vertical" />
+        <Setter Property="Margin" Value="0,0,0,5" />
+        <Setter Property="Spacing" Value="5" />
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        <Setter Property="VerticalOptions" Value="StartAndExpand" />
+        <Setter Property="IsEnabled" Value="True" />
+        <Setter Property="IsVisible" Value="True" />
+    </Style>
+
+    <Style x:Key="stackMainBMSDetailsWattsMbl" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Vertical" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Spacing" Value="5" />
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        <Setter Property="VerticalOptions" Value="StartAndExpand" />
+        <Setter Property="IsEnabled" Value="False" />
+        <Setter Property="IsVisible" Value="False" />
+    </Style>
+
+    <Style x:Key="stackMainBMSDetailsCase" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Vertical" />
+        <Setter Property="Margin" Value="0,0,0,5" />
+        <Setter Property="Spacing" Value="5" />
+        <Setter Property="Padding" Value="5,0,10,0" />
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        <Setter Property="VerticalOptions" Value="StartAndExpand" />
+        <Setter Property="IsEnabled" Value="True" />
+        <Setter Property="IsVisible" Value="True" />
+    </Style>
+
+    <Style x:Key="stackMainBMSDetailsCaseMbl" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Vertical" />
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="Padding" Value="0,0,0,0" />
+        <Setter Property="Spacing" Value="5" />
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        <Setter Property="VerticalOptions" Value="StartAndExpand" />
+        <Setter Property="IsEnabled" Value="False" />
+        <Setter Property="IsVisible" Value="False" />
+    </Style>
+
+    <Style x:Key="MainBoxStackStyle" TargetType="StackLayout">
+        <Setter Property="Margin" Value="0,0,0,0" />
+        <Setter Property="Padding" Value="0,5,10,0" />
+    </Style>
+
+    <Style x:Key="imgBMSIndicator" TargetType="Image">
+        <Setter Property="WidthRequest" Value="25" />
+        <Setter Property="HeightRequest" Value="25" />
+    </Style>
+
+    <!--  Multi Main Page Style End  -->
+
+    <Style x:Key="MultiMainChargeDisCharge" TargetType="Label">
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+
+    <Style x:Key="MultiMainStackLayoutOne" TargetType="StackLayout">
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        <Setter Property="Margin" Value="0,0,0,0" />
+    </Style>
+
+
+    <!--  Log Page Start  -->
+
+    <Style x:Key="LogMainStacklayout" TargetType="StackLayout">
+        <Setter Property="Padding" Value="5,10,5,10" />
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        <Setter Property="Orientation" Value="Horizontal" />
+        <Setter Property="Spacing" Value="-8" />
+    </Style>
+
+    <Style x:Key="LogMainImage" TargetType="Image">
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="HeightRequest" Value="55" />
+    </Style>
+
+    <Style x:Key="LogMainTitleLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="WidthRequest" Value="120" />
+        <Setter Property="Margin" Value="20,0,0,0" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+    </Style>
+
+    <Style x:Key="LogMainValueLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="LogMainHeader" TargetType="Label">
+        <Setter Property="FontSize" Value="30" />
+    </Style>
+
+    <!--  Log Page End  -->
+
+
+    <!--  Calibration Page Start  -->
+    <Style x:Key="MainCalibration" TargetType="StackLayout">
+        <Setter Property="Padding" Value="0,35,0,30" />
+    </Style>
+
+    <Style x:Key="VoltageCalibrationlable" TargetType="Label">
+        <Setter Property="Padding" Value="15,10,15,10" />
+        <Setter Property="FontSize" Value="22" />
+    </Style>
+
+    <Style x:Key="CalibrationIcon" TargetType="Image">
+        <Setter Property="HeightRequest" Value="60" />
+    </Style>
+
+    <Style x:Key="CalibratioNameLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="21" />
+    </Style>
+
+    <Style x:Key="CalibratioValueLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+
+    <Style x:Key="PrecisionlValueLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="HeightRequest" Value="45" />
+        <Setter Property="WidthRequest" Value="100" />
+    </Style>
+
+    <Style x:Key="ShuntCalibrationNamelable" TargetType="Label">
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="HeightRequest" Value="35" />
+    </Style>
+
+    <Style x:Key="CalibrationInformationlable" TargetType="Label">
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="HeightRequest" Value="40" />
+    </Style>
+
+    <Style x:Key="ShuntCalibrationValuelable" TargetType="Label">
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="Padding" Value="5,0,0,0" />
+        <Setter Property="HeightRequest" Value="35" />
+        <Setter Property="WidthRequest" Value="100" />
+    </Style>
+
+    <Style x:Key="VoltageCellFrame" TargetType="Frame">
+        <Setter Property="HeightRequest" Value="85" />
+        <Setter Property="Padding" Value="20,5,20,5" />
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+    </Style>
+
+    <!--  Calibration Page End  -->
+
+    <!--  Main Page End  -->
+
+    <Style x:Key="stackMainPageGauge" TargetType="StackLayout">
+        <Setter Property="HeightRequest" Value="290" />
+    </Style>
+
+    <Style x:Key="imgMainPageStatusDesign" TargetType="Image">
+        <Setter Property="Margin" Value="10,10,10,10" />
+        <Setter Property="HeightRequest" Value="80" />
+    </Style>
+
+    <Style x:Key="imgMainPageFullChargeDesign" TargetType="Image">
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="WidthRequest" Value="50" />
+        <Setter Property="Margin" Value="10" />
+    </Style>
+
+    <Style x:Key="grdMainPageFullChargeDesign" TargetType="Grid">
+        <Setter Property="HeightRequest" Value="70" />
+        <Setter Property="WidthRequest" Value="70" />
+    </Style>
+
+    <Style x:Key="stackMainPageFullChargeDesign" TargetType="StackLayout">
+        <Setter Property="HeightRequest" Value="70" />
+        <Setter Property="WidthRequest" Value="70" />
+        <Setter Property="Margin" Value="5" />
+    </Style>
+
+    <Style x:Key="stackHomeStatusInner" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Horizontal" />
+    </Style>
+
+    <Style x:Key="imgHomeFullCharge" TargetType="Image">
+        <Setter Property="WidthRequest" Value="70" />
+        <Setter Property="HeightRequest" Value="70" />
+    </Style>
+
+    <Style x:Key="frmHomeFullCharge" TargetType="Frame">
+        <Setter Property="WidthRequest" Value="70" />
+        <Setter Property="HeightRequest" Value="70" />
+    </Style>
+
+    <Style x:Key="frmHomeFullChargeMulti" TargetType="Frame">
+        <Setter Property="WidthRequest" Value="45" />
+        <Setter Property="HeightRequest" Value="45" />
+    </Style>
+
+    <Style x:Key="frmHomeMainStatus" TargetType="Frame">
+        <Setter Property="WidthRequest" Value="70" />
+        <Setter Property="HeightRequest" Value="70" />
+    </Style>
+
+    <Style x:Key="stackHomeMainStatus" TargetType="StackLayout">
+        <Setter Property="WidthRequest" Value="70" />
+        <Setter Property="HeightRequest" Value="70" />
+    </Style>
+
+    <Style x:Key="imgCycleRemaingHeight" TargetType="Image">
+        <Setter Property="HeightRequest" Value="60" />
+        <Setter Property="Margin" Value="0,0,0,10" />
+    </Style>
+
+    <Style x:Key="lblCycleRemaingFontOne" TargetType="Label">
+        <Setter Property="FontSize" Value="22" />
+    </Style>
+
+    <Style x:Key="lblCycleRemaingFontTwo" TargetType="Label">
+        <Setter Property="FontSize" Value="21" />
+    </Style>
+
+    <Style x:Key="lblBMSAlertHeading" TargetType="Label">
+        <Setter Property="Margin" Value="0,-35,0,0" />
+        <Setter Property="FontSize" Value="32" />
+    </Style>
+
+    <Style x:Key="imgBMSDetailsLabelIcon" TargetType="Image">
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        <Setter Property="HeightRequest" Value="70" />
+        <Setter Property="WidthRequest" Value="70" />
+    </Style>
+
+    <Style x:Key="stackBMSDetailsPerStackOuter" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Horizontal" />
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="Spacing" Value="1" />
+    </Style>
+
+    <Style x:Key="stackBMSDetailsPerStackInner" TargetType="StackLayout">
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="Padding" Value="10,0,0,0" />
+    </Style>
+
+    <Style x:Key="lblBMSDetailsLabelHeading" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="IsVisible" Value="False" />
+    </Style>
+
+    <Style x:Key="lblBMSDetailsLabelValue" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="WidthRequest" Value="110" />
+        <Setter Property="VerticalOptions" Value="EndAndExpand" />
+    </Style>
+
+    <Style x:Key="stackMainBMSAlertsStyle" TargetType="StackLayout">
+        <Setter Property="Margin" Value="0,25,0,0" />
+    </Style>
+
+    <Style x:Key="imgBtnBMSAlert" TargetType="ImageButton">
+        <Setter Property="WidthRequest" Value="20" />
+        <Setter Property="HeightRequest" Value="100" />
+    </Style>
+
+    <!--  Main Page End  -->
+
+
+    <!--  Auto Dashboard Start  -->
+
+    <Style x:Key="lblFuelFullStatus" TargetType="Label">
+        <Setter Property="FontSize" Value="25" />
+    </Style>
+
+    <Style x:Key="lblFuelEmptyStatus" TargetType="Label">
+        <Setter Property="FontSize" Value="25" />
+    </Style>
+
+    <Style x:Key="imgGasStation" TargetType="Image">
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="WidthRequest" Value="40" />
+    </Style>
+
+    <Style x:Key="ArrowRightSize" TargetType="StackLayout">
+        <Setter Property="HeightRequest" Value="20" />
+        <Setter Property="WidthRequest" Value="20" />
+    </Style>
+
+    <Style x:Key="stackAutoUnitSelection" TargetType="StackLayout">
+        <Setter Property="Padding" Value="25,5,25,5" />
+    </Style>
+
+    <Style x:Key="lblAutoType" TargetType="Label">
+        <Setter Property="FontSize" Value="30" />
+        <Setter Property="FontAttributes" Value="Bold,Italic" />
+    </Style>
+
+    <Style x:Key="lblAutoSpeedType" TargetType="Label">
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="FontAttributes" Value="Bold,Italic" />
+    </Style>
+
+    <Style x:Key="lblAutoDigit" TargetType="Label">
+        <Setter Property="FontSize" Value="130" />
+        <Setter Property="FontAttributes" Value="Bold,Italic" />
+    </Style>
+
+    <Style x:Key="brdAutoType" TargetType="Border">
+        <Setter Property="Margin" Value="0,30,0,0" />
+    </Style>
+
+    <Style x:Key="stackAutoValues" TargetType="StackLayout">
+        <Setter Property="Spacing" Value="-30" />
+    </Style>
+
+    <Style x:Key="imagegAutoDashboard" TargetType="Image">
+        <Setter Property="HeightRequest" Value="80" />
+        <Setter Property="WidthRequest" Value="80" />
+        <Setter Property="Margin" Value="10" />
+    </Style>
+
+    <Style x:Key="ListFuelIndicator" TargetType="syncfusion:SfListView">
+        <Setter Property="ItemSize" Value="20" />
+        <Setter Property="ItemSpacing" Value="4" />
+        <Setter Property="MaximumHeightRequest" Value="160" />
+    </Style>
+
+    <!--  Auto Dashboard End  -->
+
+    <Style x:Key="WarningLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="IsVisible" Value="true" />
+    </Style>
+
+    <Style x:Key="StackBMSIndicator" TargetType="StackLayout">
+        <Setter Property="Margin" Value="15,5,0,-20" />
+        <Setter Property="WidthRequest" Value="25" />
+        <Setter Property="HeightRequest" Value="25" />
+    </Style>
+
+    <Style x:Key="calibrateImageButton" TargetType="ImageButton">
+        <Setter Property="HeightRequest" Value="30" />
+        <Setter Property="WidthRequest" Value="30" />
+    </Style>
+
+    <!--  Networking Mode Start  -->
+
+    <Style x:Key="WirelessHeadingStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="25" />
+    </Style>
+
+    <Style x:Key="LabelWirelessMode" TargetType="Label">
+        <Setter Property="FontSize" Value="24" />
+    </Style>
+
+    <Style x:Key="LabelWirelessModeSubHeading" TargetType="Label">
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <Style x:Key="FrameWirelessMode" TargetType="Frame">
+        <Setter Property="HeightRequest" Value="100" />
+        <Setter Property="WidthRequest" Value="100" />
+    </Style>
+
+    <Style x:Key="ImageWirelessMode" TargetType="Image">
+        <Setter Property="HeightRequest" Value="100" />
+        <Setter Property="WidthRequest" Value="100" />
+    </Style>
+
+    <Style x:Key="BorderWirelessModeOption" TargetType="Border">
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="StrokeShape">
+            <Setter.Value>
+                <RoundRectangle CornerRadius="10" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="EntryWirelessModeOption" TargetType="Entry">
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <Style x:Key="WirelessModeStackSpacing" TargetType="StackLayout">
+        <Setter Property="HeightRequest" Value="20" />
+    </Style>
+
+    <!--  Networking Mode End  -->
+
+    <Style x:Key="lblSinceFullChargeDays" TargetType="Label">
+        <Setter Property="Margin" Value="0,15,0,0" />
+        <Setter Property="FontSize" Value="22" />
+    </Style>
+
+    <Style x:Key="imgMainPageFullChargeDesignMulti" TargetType="Image">
+        <Setter Property="HeightRequest" Value="45" />
+        <Setter Property="WidthRequest" Value="45" />
+        <Setter Property="Margin" Value="5" />
+    </Style>
+
+    <Style x:Key="frmHomeMainStatusMulti" TargetType="Frame">
+        <Setter Property="WidthRequest" Value="60" />
+        <Setter Property="HeightRequest" Value="60" />
+    </Style>
+
+    <Style x:Key="lblSinceFullChargeDaysMulti" TargetType="Label">
+        <Setter Property="Margin" Value="0,12,0,0" />
+        <Setter Property="FontSize" Value="21" />
+    </Style>
+
+    <!--  Firmware tab Start  -->
+
+    <Style x:Key="FirmwareTitleStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="30" />
+    </Style>
+    <Style x:Key="LableReleaseNotesStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+    <Style x:Key="FirmwareDisplayMessageStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="24" />
+    </Style>
+
+    <Style x:Key="FirmwareButtonStyle" TargetType="buttons:SfButton">
+        <Setter Property="FontSize" Value="25" />
+    </Style>
+
+    <!--  Firmware tab end  -->
+
+</ResourceDictionary>

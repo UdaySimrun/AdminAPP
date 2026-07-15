@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SFKBle_Admin.MultiDeviceSetupPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Local="clr-namespace:SFKBle_Admin"
+    xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
+    NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <Grid BackgroundColor="#ffffff">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition x:Name="RowTwoHeight" Height="30" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="100" />
+            </Grid.RowDefinitions>
+            <StackLayout
+                Grid.Row="0"
+                Padding="5,0,5,0"
+                HeightRequest="40"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Vertical"
+                VerticalOptions="Start">
+                <StackLayout
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="CenterAndExpand">
+                    <Image Source="sunfunkitslogowtb.png" WidthRequest="70" />
+                    <Label
+                        Padding="10,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="15"
+                        HorizontalOptions="CenterAndExpand"
+                        IsVisible="False"
+                        Text="www.sunfunkits.com"
+                        TextColor="Black" />
+                    <Label
+                        FontSize="16"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="End"
+                        Text="V9.38"
+                        TextColor="Black" />
+                </StackLayout>
+                <BoxView
+                    BackgroundColor="#f0c000"
+                    HeightRequest="1"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start" />
+            </StackLayout>
+            <StackLayout
+                Grid.Row="1"
+                Margin="0,0,0,0"
+                Padding="0,0,0,0">
+                <Label
+                    FontAttributes="Bold"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource BatteryConnectionSetupFont}"
+                    Text="Battery Connection Setup"
+                    TextColor="#000" />
+            </StackLayout>
+            <StackLayout
+                x:Name="stackBorders"
+                Grid.Row="2"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="FillAndExpand">
+                <StackLayout
+                    x:Name="stackSerial"
+                    Margin="0,0,0,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal">
+                    <StackLayout HeightRequest="10" WidthRequest="10" />
+                    <Border
+                        x:Name="sfSerial"
+                        Margin="10,10,5,10"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="#f0c000"
+                        StrokeThickness="2"
+                        VerticalOptions="StartAndExpand">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="15" />
+                        </Border.StrokeShape>
+                        <StackLayout ClassId="SerialClass" VerticalOptions="StartAndExpand">
+                            <Image
+                                x:Name="imgSerialSelected"
+                                Margin="5"
+                                HeightRequest="30"
+                                HorizontalOptions="EndAndExpand"
+                                Source="deselect.png"
+                                VerticalOptions="StartAndExpand"
+                                WidthRequest="30" />
+                            <Image
+                                x:Name="imgSerial"
+                                Margin="10"
+                                IsVisible="True"
+                                Source="series2.png"
+                                WidthRequest="1000" />
+                            <Label
+                                x:Name="rdSerial"
+                                Margin="0,0,0,0"
+                                Padding="0,5,0,5"
+                                BackgroundColor="#f0c000"
+                                FontAttributes="Bold"
+                                HeightRequest="40"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource MultiSetupStyle}"
+                                Text="Serial"
+                                TextColor="Black"
+                                VerticalOptions="End"
+                                VerticalTextAlignment="Center" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </Border>
+                    <Border
+                        x:Name="sfParallel"
+                        Margin="5,10,10,10"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="#f0c000"
+                        StrokeThickness="2"
+                        VerticalOptions="StartAndExpand">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="15" />
+                        </Border.StrokeShape>
+                        <StackLayout ClassId="ParallelClass" VerticalOptions="StartAndExpand">
+                            <Image
+                                x:Name="imgParallelSelected"
+                                Margin="5"
+                                HeightRequest="30"
+                                HorizontalOptions="EndAndExpand"
+                                Source="deselect.png"
+                                VerticalOptions="StartAndExpand"
+                                WidthRequest="30" />
+                            <Image
+                                x:Name="imgParallel"
+                                Margin="10"
+                                HeightRequest="100"
+                                Source="parallel2.png" />
+                            <Label
+                                x:Name="rdParallel"
+                                Margin="0,0,0,0"
+                                Padding="0,5,0,5"
+                                BackgroundColor="#f0c000"
+                                FontAttributes="Bold"
+                                HeightRequest="40"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource MultiSetupStyle}"
+                                Text="Parallel"
+                                TextColor="Black"
+                                VerticalOptions="End"
+                                VerticalTextAlignment="Center" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </Border>
+                </StackLayout>
+                <StackLayout
+                    x:Name="stackVerticalParallelandSerial"
+                    Padding="20,0,0,0"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="True"
+                    VerticalOptions="FillAndExpand">
+                    <StackLayout HeightRequest="10" WidthRequest="10" />
+                    <Border
+                        x:Name="sfParallelandSerial"
+                        Margin="20,0,0,0"
+                        HorizontalOptions="StartAndExpand"
+                        Stroke="#f0c000"
+                        StrokeThickness="2"
+                        VerticalOptions="StartAndExpand">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="15" />
+                        </Border.StrokeShape>
+                        <StackLayout ClassId="ParallelandSerialClass" VerticalOptions="StartAndExpand">
+                            <Image
+                                x:Name="imgParallelandSerialSelected"
+                                Margin="5"
+                                HeightRequest="30"
+                                HorizontalOptions="EndAndExpand"
+                                Source="deselect.png"
+                                VerticalOptions="StartAndExpand"
+                                WidthRequest="30" />
+                            <Image
+                                x:Name="imgVerticalParallelandSerial"
+                                Margin="10"
+                                HeightRequest="100"
+                                Source="series2parallel2.png" />
+                            <Label
+                                x:Name="rdParallelandSerial"
+                                Margin="0,0,0,0"
+                                Padding="0,5,0,5"
+                                BackgroundColor="#f0c000"
+                                FontAttributes="Bold"
+                                HeightRequest="40"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource MultiSetupStyle}"
+                                Text="2 Series 2 parallel (24v)"
+                                TextColor="Black"
+                                VerticalOptions="End"
+                                VerticalTextAlignment="Center" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </Border>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout
+                Grid.Row="3"
+                Margin="0,0,0,20"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="True"
+                VerticalOptions="EndAndExpand">
+                <StackLayout>
+                    <Button
+                        x:Name="btnSubmitBatterySetup"
+                        Margin="10,5,10,5"
+                        Padding="10,15,0,15"
+                        BackgroundColor="#fc0"
+                        Clicked="btnSubmitBatterySetup_Clicked"
+                        CornerRadius="10"
+                        FontSize="16"
+                        Text="Submit"
+                        TextColor="Black"
+                        VerticalOptions="EndAndExpand" />
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+
+
+        <StackLayout
+            x:Name="stackBusy"
+            BackgroundColor="#000000"
+            InputTransparent="False"
+            IsVisible="false"
+            Opacity="0.6"
+            ZIndex="98">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+        <Border
+            x:Name="sfbIsBusyIndicator"
+            BackgroundColor="#fff"
+            HeightRequest="260"
+            HorizontalOptions="CenterAndExpand"
+            IsVisible="True"
+            Stroke="White"
+            VerticalOptions="CenterAndExpand"
+            WidthRequest="280"
+            ZIndex="99">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="12" />
+            </Border.StrokeShape>
+            <StackLayout
+                x:Name="IsBusyIndicator"
+                HorizontalOptions="Center"
+                Spacing="10"
+                VerticalOptions="Center">
+                <Image
+                    x:Name="loadingImage"
+                    HeightRequest="150"
+                    HorizontalOptions="Center"
+                    IsAnimationPlaying="True"
+                    Source="loading.gif"
+                    VerticalOptions="Center"
+                    WidthRequest="150" />
+                <!--  Label for Title  -->
+                <Label
+                    x:Name="lblBusyIndicator"
+                    Margin="0,-20,0,0"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource BusyIndicatorStyle}"
+                    Text="Updating..."
+                    TextColor="#F0C000"
+                    VerticalOptions="Center" />
+            </StackLayout>
+        </Border>
+
+        <Border
+            x:Name="stkDisplayMessagePopUp"
+            Margin="20,0,20,0"
+            Padding="10,0,10,0"
+            BackgroundColor="White"
+            HorizontalOptions="Center"
+            IsVisible="False"
+            Stroke="White"
+            VerticalOptions="CenterAndExpand"
+            ZIndex="98">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="12" />
+            </Border.StrokeShape>
+            <Grid
+                Padding="0,20,0,20"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Fill">
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Name="grdRowPopUpFirst" Height="90" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalOptions="StartAndExpand">
+                    <Image
+                        x:Name="imgDisplay"
+                        Margin="0,0,0,10"
+                        HorizontalOptions="FillAndExpand"
+                        Source="settingsupdated.png"
+                        Style="{StaticResource SuccesPopupImageHeight}"
+                        VerticalOptions="Start" />
+                </StackLayout>
+                <ScrollView
+                    x:Name="scrPopupText"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="0,0,0,0"
+                    HorizontalOptions="CenterAndExpand"
+                    IsEnabled="True"
+                    VerticalOptions="Fill"
+                    VerticalScrollBarVisibility="Default">
+                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                        <Label
+                            x:Name="lblText"
+                            FontAttributes="Bold"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Style="{StaticResource PopupFontSize}"
+                            Text=""
+                            TextColor="#2D2D2D"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center" />
+                    </StackLayout>
+                </ScrollView>
+                <StackLayout
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    VerticalOptions="End">
+                    <Border
+                        x:Name="btnOK"
+                        BackgroundColor="#39B54A"
+                        HorizontalOptions="CenterAndExpand"
+                        Stroke="#39B54A"
+                        VerticalOptions="EndAndExpand">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="6" />
+                        </Border.StrokeShape>
+                        <StackLayout
+                            Margin="10,5,10,5"
+                            ClassId="Ok"
+                            Orientation="Horizontal">
+                            <Image
+                                x:Name="imgOK"
+                                HeightRequest="30"
+                                HorizontalOptions="EndAndExpand"
+                                Source="yes.png"
+                                VerticalOptions="CenterAndExpand" />
+                            <Label
+                                x:Name="lblOK"
+                                Padding="20,0,20,0"
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Ok"
+                                TextColor="#fff"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="DisplayPopup_Clicked" />
+                        </Border.GestureRecognizers>
+                    </Border>
+                </StackLayout>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>
